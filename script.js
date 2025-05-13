@@ -31,3 +31,6 @@ function addStudentToTable(student){
     `;
     tablebody.appendChild(row)
 }
+
+const promedio=document.getElementById("average");
+
