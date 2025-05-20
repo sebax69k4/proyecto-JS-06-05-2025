@@ -29,7 +29,15 @@ function addStudentToTable(student){
     <td>${student.lastname}</td>
     <td>${student.fecha}</td>
     <td>${student.grade}</td>
+    <td>
+    <button class=".delete-btn">Eliminar</button>
+    </td>
     `;
+
+    row.querySelector(".delete-btn").addEventListener("click",function(){
+        borrarEstudiante(student,row);
+    })
+
     tablebody.appendChild(row)
 }
 
