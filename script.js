@@ -30,7 +30,7 @@ function addStudentToTable(student){
     <td>${student.fecha}</td>
     <td>${student.grade}</td>
     <td>
-    <button class=".delete-btn">Eliminar</button>
+    <button class="delete-btn">Eliminar</button>
     </td>
     `;
 
@@ -39,6 +39,16 @@ function addStudentToTable(student){
     })
 
     tablebody.appendChild(row)
+}
+
+function borrarEstudiante(student,row){
+    const index=students.indexOf(student);
+    if(index > -1){
+        students.splice(index,1);
+        row.remove();
+        calculateAverage();
+
+    }
 }
 
 
