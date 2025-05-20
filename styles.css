@@ -99,4 +99,69 @@ button:hover {
 
 #studentstable tbody tr:hover {
     background-color: #f8f9fa;
+}
+
+/* Media Queries para Responsive Design */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    #studentform {
+        padding: 1rem;
+    }
+
+    #studentstable {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    #studentstable th,
+    #studentstable td {
+        padding: 0.8rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    input {
+        padding: 0.6rem;
+    }
+
+    button {
+        padding: 0.6rem 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 0.5rem;
+    }
+
+    #studentform {
+        padding: 0.8rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    #average {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    label {
+        font-size: 0.9rem;
+    }
+
+    input {
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
 } 
