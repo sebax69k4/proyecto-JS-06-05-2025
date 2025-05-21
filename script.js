@@ -30,12 +30,17 @@ function addStudentToTable(student){
     <td>${student.fecha}</td>
     <td>${student.grade}</td>
     <td>
+    <button class="edit-btn">Editar</button>
     <button class="delete-btn">Eliminar</button>
     </td>
     `;
 
     row.querySelector(".delete-btn").addEventListener("click",function(){
         borrarEstudiante(student,row);
+    })
+
+    row.querySelector(".edit-btn").addEventListener("click",function(){
+        editarEstudiante(student,row);
     })
 
     tablebody.appendChild(row)
@@ -51,6 +56,19 @@ function borrarEstudiante(student,row){
     }
 }
 
+function editarEstudiante(student, row) {
+    document.getElementById("name").value = student.name;
+    document.getElementById("lastname").value = student.lastname;
+    document.getElementById("fecha").value = student.fecha;
+    document.getElementById("grade").value = student.grade;
+    
+    const index = students.indexOf(student);
+    if (index > -1) {
+        students.splice(index, 1);
+        row.remove();
+        calculateAverage();
+    }
+}
 
 const promedioDiv = document.getElementById("average");
 const calculateAverage = () => {
