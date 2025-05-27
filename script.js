@@ -18,6 +18,7 @@ document.getElementById("studentform").addEventListener("submit",function(e){
     console.log(student);
     addStudentToTable(student)
     calculateAverage();
+    updateStatistics();
     this.reset()
 });
 
@@ -52,7 +53,7 @@ function borrarEstudiante(student,row){
         students.splice(index,1);
         row.remove();
         calculateAverage();
-
+        updateStatistics();
     }
 }
 
@@ -67,15 +68,29 @@ function editarEstudiante(student, row) {
         students.splice(index, 1);
         row.remove();
         calculateAverage();
+        updateStatistics();
     }
 }
 
 const promedioDiv = document.getElementById("average");
 const calculateAverage = () => {
   const totalGrades = students.reduce((sum, student) => sum + student.grade, 0);
-  const average = totalGrades / students.length;
+  const average = totalGrades / students.length || 0;
   promedioDiv.textContent = `El promedio es: ${average.toFixed(2)}`;
 };
+
+function updateStatistics() {
+    const totalStudents = students.length;
+    const approvedStudents = students.filter(student => student.grade >= 4.0).length;
+    const failedStudents = totalStudents - approvedStudents;
+    
+    const approvedPercentage = (approvedStudents / totalStudents) * 100 || 0;
+    const failedPercentage = (failedStudents / totalStudents) * 100 || 0;
+    
+    document.getElementById("totalStudents").textContent = `Total de estudiantes: ${totalStudents}`;
+    document.getElementById("approvedPercentage").textContent = `Estudiantes aprobados: ${approvedPercentage.toFixed(1)}%`;
+    document.getElementById("failedPercentage").textContent = `Estudiantes reprobados: ${failedPercentage.toFixed(1)}%`;
+}
 
 /*
 function calcularPromedio(){
